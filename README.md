@@ -1,14 +1,14 @@
 # Carrito
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.8.
+Este proyecto se generó utilizando [Angular CLI](https://github.com/angular/angular-cli) versión 21.2.8.
 
 # Sistema de Carrito de Compras - Angular 2026
 
-¡Bienvenido al proyecto de Carrito de Compras! Esta es una aplicación web moderna (SPA) desarrollada con Angular para simular un flujo completo de e-commerce: catálogo de productos, autenticación de usuarios, gestión de un carrito local y administración de pedidos en tiempo real conectados a una API.
+¡Bienvenido al proyecto de Carrito de Compras! Esta es una página web hecha con Angular que simula una tienda en línea completa. Aquí se puede iniciar sesión, ver el catálogo de productos, agregar artículos al carrito y realizar pedidos conectados a una API.
 
 ## Enlace del Proyecto en Vivo
 Puedes interactuar con la aplicación completamente desplegada en internet haciendo clic aquí:
-[Visitar Carrito de Compras en Vivo](https://marvelazquez15.github.io/mi-carrito-mariana/)
+[https://marvelazquez15.github.io/mi-carrito-mariana/](https://marvelazquez15.github.io/mi-carrito-mariana/)
 
 ---
 
