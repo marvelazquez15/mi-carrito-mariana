@@ -1,19 +1,19 @@
 <header class="topbar">
   <div class="container topbar__inner">
     <a class="brand" routerLink="/tienda" aria-label="Ir a la tienda">
-      <div class="brand__logo" aria-hidden="true">CH</div>
+      <div class="brand__logo" aria-hidden="true">M / S</div>
       <div class="brand__text">
-        <div class="brand__name">Carrito</div>
-        <div class="brand__tag">UI tienda</div>
+        <div class="brand__name">M O O N</div>
+        <div class="brand__tag">S M A R T</div>
       </div>
     </a>
 
     <div class="topbar__actions">
-      <a class="btn btn--ghost" routerLink="/tienda" routerLinkActive="is-active">Tienda</a>
+      <a class="btn btn--ghost" routerLink="/tienda" routerLinkActive="is-active">COMPRAR</a>
 
       @if (authService.isLoggedIn()) {
-        <a class="btn btn--ghost" routerLink="/carrito" routerLinkActive="is-active">Mi carrito</a>
-        <a class="btn btn--ghost" routerLink="/mis-pedidos" routerLinkActive="is-active">Mis pedidos</a>
+        <a class="btn btn--ghost" routerLink="/carrito" routerLinkActive="is-active">CESTA</a>
+        <a class="btn btn--ghost" routerLink="/mis-pedidos" routerLinkActive="is-active">MIS PEDIDOS</a>
 
         @if (authService.isAdmin()) {
           <a class="btn btn--primary" routerLink="/productos" routerLinkActive="is-active">
@@ -21,9 +21,9 @@
           </a>
         }
 
-        <button class="btn btn--ghost" type="button" (click)="logout()">Logout</button>
+        <button class="btn btn--ghost" type="button" (click)="logout()">CERRAR SESION</button>
       } @else {
-        <a class="btn btn--primary" routerLink="/login" routerLinkActive="is-active">Login</a>
+        <a class="btn btn--primary" routerLink="/login" routerLinkActive="is-active">INICIAR SESION</a>
       }
     </div>
   </div>

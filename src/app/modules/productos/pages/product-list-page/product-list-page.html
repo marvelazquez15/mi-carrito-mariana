@@ -1,11 +1,11 @@
 <main class="container page">
     <section class="page__head page__head--wide">
       <div>
-        <h1 class="h1">Productos</h1>
-        <p class="muted">Catálogo (datos de prueba en el componente, sin servicio).</p>
+        <h1 class="h1">PRODUCTOS EN LINEA</h1>
+        <p class="muted">"CREA EL HOGAR QUE SIEMPRE SOÑASTE"</p>
       </div>
       <div class="page__meta">
-        <button class="btn btn--primary" type="button" (click)="openCreateModal(false)">Nuevo producto</button>
+        <button class="btn btn--primary" type="button" (click)="openCreateModal(false)">NUEVO PRODUCTO</button>
       </div>
     </section>
   
@@ -13,7 +13,7 @@
       <article class="card">
         <header class="card__head">
           <h2 class="h2">Listado</h2>
-          <div class="muted">10 ítems</div>
+          <div class="muted">Productos</div>
         </header>
   
         
@@ -57,7 +57,7 @@
       <form class="form" [formGroup]="productForm" (ngSubmit)="saveProduct()">
         <div class="field">
           <label class="label" for="pm-name">Nombre</label>
-          <input id="pm-name" class="input" type="text" formControlName="name"  placeholder="Ej: Sudadera" />
+          <input id="pm-name" class="input" type="text" formControlName="name"  placeholder="Ej. Cafetera" />
 
           @if (isFieldInvalid('name')) {
             <p class="error">{{ getFieldError('name') }}</p>
@@ -109,8 +109,8 @@
           </div>
         </div>
         <div class="form__actions">
-          <button class="btn btn--primary" type="submit">Guardar</button>
-          <button class="btn btn--ghost" type="button">Cancelar</button>
+          <button class="btn btn--primary" type="submit">GUARDAR</button>
+          <button class="btn btn--ghost" type="button">CANCELAR</button>
         </div>
       </form>
   

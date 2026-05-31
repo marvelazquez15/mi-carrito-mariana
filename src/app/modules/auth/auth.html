@@ -1,38 +1,45 @@
-<main class="container page page--center">
+<div class="split-layout">
+  
+  <div class="visual-side">
+    <div class="visual-content">
+      <span class="visual-badge">M O O N ~ S M A R T</span>
+      <h2 class="visual-title">Espacios inteligentes, hogares funcionales</h2>
+      <div class="circle-shape shape-1"></div>
+      <div class="circle-shape shape-2"></div>
+    </div>
+  </div>
+
+  <main class="container page page--center">
     <section class="page__head page__head--narrow">
       <div>
-        <h1 class="h1">Iniciar sesión</h1>
-        <p class="muted">Accede para poder cargar productos.</p>
+        <h1 class="h1">ACCEDE O CREA TU CUENTA</h1>
         @if(message()){
           <div class="alert">
             {{message()}}
           </div>
         }
-        
       </div>
     </section>
   
     <section class="grid grid--single">
         <article class="card">
             <header class="card__head">
-              <h2 class="h2">Login</h2>
-              <div class="muted">Solo cuentas pueden cargar productos</div>
+              <h2 class="h2">Inicio de Sesión</h2>
+              <div class="muted">Solo cuentas Autorizadas</div>
             </header>
           
             <form class="form" autocomplete="on" [formGroup]="loginForm" (ngSubmit)="login()">
               <div class="field">
-                <label class="label" for="email">Nombre de Usuario</label>
-                <input id="email" class="input" type="input" formControlName="username" placeholder="Nombre de Usuario" />
+                <label class="label" for="email">USUARIO</label>
+                <input id="email" class="input" type="input" formControlName="username" placeholder="Ej. Mariana" />
                 
                 @if(isFieldInvalid('username')){
                   <p class="error"> {{getFieldError('username')}} </p>
                 }
-                
-                
               </div>
               <div class="field">
-                <label class="label" for="pass">Contraseña</label>
-                <input id="pass" class="input" type="password" formControlName="password" placeholder="••••••••" />
+                <label class="label" for="pass">CONTRASEÑA</label>
+                <input id="pass" class="input" type="password" formControlName="password" placeholder="••••••••••••••" />
 
                 @if(isFieldInvalid('password')){
                   <p class="error"> {{getFieldError('password')}} </p>
@@ -46,11 +53,12 @@
                 <a class="link" href="#" (click)="$event.preventDefault()">¿Olvidaste tu contraseña?</a>
               </div>
               <div class="form__actions">
-                <button class="btn btn--primary" type="submit" >Entrar</button>
-                <button class="btn btn--ghost" type="button">Crear cuenta</button>
+                <button class="btn btn--primary" type="submit" >CONTINUAR</button>
+                <button class="btn btn--ghost" type="button">REGISTRARME</button>
               </div>
             </form>
           </article>
-          
     </section>
   </main>
+
+</div>

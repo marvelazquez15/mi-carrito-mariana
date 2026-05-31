@@ -1,80 +1,118 @@
-.topbar{
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
-  }
-  
-  .topbar__inner{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 14px 0;
-    gap: 16px;
-  }
-  
-  .topbar__actions{
-    display: flex;
-    align-items: center;
-    gap: 10px;
+.topbar {
+  background: #ffffff; 
+  border-bottom: 1px solid #D5E5E5; 
+}
+
+.topbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0; 
+  gap: 16px;
+}
+
+.topbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.topbar__actions .btn {
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  border-radius: 30px; 
+}
+.topbar__actions .btn.btn--ghost {
+  border: none;
+  background: transparent;
+  color: #5D6B6B; 
+  padding: 8px 16px;
+}
+
+.topbar__actions .btn.btn--ghost:hover {
+  background: #F1F7F7;
+  color: #5D6B6B;
+}
+
+.topbar__actions .btn.btn--primary {
+  background: #5D6B6B; 
+  color: #ffffff;
+  border: none;
+  padding: 10px 24px;
+  box-shadow: 0 4px 10px rgba(93, 107, 107, 0.15); 
+}
+
+.topbar__actions .btn.btn--primary:hover {
+  background: #4A5555;
+  transform: translateY(-1px);
+}
+
+.topbar__actions .btn.btn--ghost.is-active {
+  background: #B0D7D8; 
+  color: #5D6B6B;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px; 
+  text-decoration: none;
+  color: #5D6B6B; 
+}
+.brand:visited, .brand:hover { color: #5D6B6B; }
+
+.brand__logo {
+  width: 60px;
+  height: 60px;
+  border-radius: 14px;
+  background: #F7CBCA; 
+  color: #ffffff;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+
+.brand__name { 
+  font-weight: 900; 
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.brand__tag { 
+  color: #B0D7D8; 
+  font-size: 13px; 
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 1px; 
+}
+
+@media (max-width: 640px) {
+  .topbar__inner {
     flex-wrap: wrap;
+    align-items: flex-start;
   }
-  
-  /* routerLinkActive añade esta clase; hay que estilarla para ver el estado activo */
-  .topbar__actions .btn.btn--ghost.is-active{
-    border-color: #93c5fd;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.18);
-    background: #eff6ff;
+
+  .brand {
+    min-width: 0;
+    flex: 1 1 220px;
   }
-  
-  .topbar__actions .btn.btn--primary.is-active{
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.35);
+
+  .brand__text { min-width: 0; }
+  .brand__name, .brand__tag {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
-  
-  .brand{
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    min-width: 240px;
-    text-decoration: none;
-    color: inherit;
+
+  .topbar__actions {
+    width: 100%;
+    justify-content: flex-start;
   }
-  .brand:visited{ color: inherit; }
-  .brand:hover{ color: inherit; }
-  
-  .brand__logo{
-    width: 40px;
-    height: 40px;
-    border-radius: 12px;
-    background: #111827;
-    color: #ffffff;
-    display: grid;
-    place-items: center;
-    font-weight: 800;
-    letter-spacing: .5px;
-  }
-  .brand__name{ font-weight: 800; }
-  .brand__tag{ color: var(--muted); font-size: 12px; margin-top: 2px; }
-  
-  @media (max-width: 640px){
-    .topbar__inner{
-      flex-wrap: wrap;
-      align-items: flex-start;
-    }
-  
-    .brand{
-      min-width: 0;
-      flex: 1 1 220px;
-    }
-  
-    .brand__text{ min-width: 0; }
-    .brand__name, .brand__tag{
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-  
-    .topbar__actions{
-      width: 100%;
-      justify-content: flex-start;
-    }
-  }
-  
+}

@@ -1,9 +1,157 @@
-.error {
+:host {
+  display: block;
+  width: 100%;
+}
 
-    color: red;
-  
-    font-size: 14px;
-  
-    margin-top: 5px;
-  
+.split-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  min-height: calc(100vh - 70px - 50px);
+  background: #ffffff;
+}
+
+.visual-side {
+  background-color: #F1F7F7;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+  border-right: 1px solid var(--border, #E5EBEB);
+}
+
+.visual-content {
+  max-width: 420px;
+  position: relative;
+  z-index: 2;
+}
+
+.visual-badge {
+  display: inline-block;
+  background-color: #F7CBCA;
+  color: #5D6B6B;
+  padding: 6px 16px;
+  border-radius: 99px;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 24px;
+}
+
+.visual-title {
+  font-size: 36px;
+  font-weight: 800;
+  color: #5D6B6B;
+  line-height: 1.25;
+  margin: 0 0 16px 0;
+  letter-spacing: -1px;
+}
+
+.visual-subtitle {
+  font-size: 15px;
+  color: #5D6B6B;
+  opacity: 0.8;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.circle-shape {
+  position: absolute;
+  border-radius: 50%;
+  background: #B0D7D8;
+  opacity: 0.3;
+  filter: blur(60px);
+  z-index: 1;
+}
+.shape-1 { width: 250px; height: 250px; top: -20px; left: -20px; }
+.shape-2 { width: 300px; height: 300px; bottom: -60px; right: -20px; background: #F7CBCA; }
+
+.page--center {
+  align-content: center;
+  padding: 40px 24px;
+  margin: auto;
+  width: 100%;
+}
+
+.card.card {
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(93, 107, 107, 0.04);
+  border: 1px solid var(--border, #E5EBEB);
+  background: #ffffff;
+}
+
+.form {
+  padding: 24px 20px;
+  gap: 20px;
+}
+
+.input {
+  border: 1px solid var(--border, #D5E5E5);
+  border-radius: 10px;
+  height: 44px;
+  padding: 0 14px;
+  transition: all 0.2s ease;
+}
+
+.input:focus {
+  border-color: #5D6B6B;
+  box-shadow: 0 0 0 3px rgba(93, 107, 107, 0.08);
+}
+
+.form__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.form__actions .btn--primary {
+  width: 100%;
+  height: 46px;
+  border-radius: 30px;
+  background-color: #5D6B6B;
+  color: #ffffff;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.form__actions .btn--primary:hover {
+  background-color: #4A5555;
+}
+
+.form__actions .btn--ghost {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: #A5B5B5;
+  font-size: 13px;
+  text-transform: none;
+  font-weight: 600;
+  padding: 6px 0;
+}
+
+.form__actions .btn--ghost:hover {
+  color: #5D6B6B;
+  text-decoration: underline;
+}
+
+.error {
+  color: #A64444; /* Rojo terracota sobrio */
+  font-size: 12px;
+  font-weight: 600;
+  margin: 4px 0 0 0;
+}
+
+@media (max-width: 900px) {
+  .split-layout {
+    grid-template-columns: 1fr;
   }
+  .visual-side {
+    display: none;
+  }
+}
