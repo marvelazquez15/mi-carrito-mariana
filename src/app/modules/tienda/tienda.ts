@@ -29,7 +29,7 @@ export class Tienda implements OnInit {
   private readonly cartService = inject(CartService);
 
 
-  private readonly pageSize = 5
+  private readonly pageSize = 3
   protected readonly totalCount = signal(0)
   protected readonly currentPage = signal(1)
   protected readonly totalPages = signal(1)

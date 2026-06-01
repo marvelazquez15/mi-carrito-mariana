@@ -1,11 +1,11 @@
 <main class="container page">
     <section class="page__head page__head--wide">
       <div>
-        <h1 class="h1">Mi carrito</h1>
-        <p class="muted">Productos agregados</p>
+        <h1 class="h1">MI CARRITO</h1>
+        <p class="muted">PRODUCTOS AÑADIDOS</p>
       </div>
       <div class="page__meta">
-        <a class="btn btn--ghost" routerLink="/tienda">Seguir comprando</a>
+        <a class="btn btn--ghost" routerLink="/tienda">SEGUIR COMPRANDO</a>
       </div>
     </section>
   
@@ -13,12 +13,12 @@
       <article class="card">
         @if (cart(); as c) {
           <header class="card__head">
-            <h2 class="h2">Ítems</h2>
+            <h2 class="h2">ITEMS</h2>
             <div class="muted">{{ c.total_items }} productos · Total: {{ c.total_amount }}</div>
           </header>
   
           @if (c.items.length === 0) {
-            <p class="empty-msg muted">Tu carrito está vacío.</p>
+            <p class="empty-msg muted">CARRITO VACIO.</p>
           } @else {
             <div class="table-wrap">
               <table class="table" aria-label="Carrito">
@@ -57,7 +57,7 @@
                           type="button"
                           (click)="removeItem(item)"
                         >
-                          Quitar
+                          QUITAR
                         </button>
                       </td>
                     </tr>
@@ -68,7 +68,7 @@
   
             <footer class="cart-foot">
               <button class="btn btn--primary" type="button" (click)="openCheckout($event)">
-                Finalizar compra
+                FINALIZAR COMPRA
               </button>
             </footer>
           }
@@ -81,13 +81,13 @@
   <dialog #checkoutDialog class="modal modal--confirm" (click)="onCheckoutBackdrop($event)">
     <div class="modal__surface card" (click)="$event.stopPropagation()">
       <header class="card__head modal__head">
-        <h2 class="h2">Finalizar compra</h2>
+        <h2 class="h2">FINALIZAR COMPRA</h2>
       </header>
   
       <form class="modal__form" [formGroup]="checkoutForm" (ngSubmit)="confirmCheckout()" novalidate>
         <div class="modal__body">
           <div class="field">
-            <label class="label" for="ship-address">Dirección de envío</label>
+            <label class="label" for="ship-address">DIRECCION DE ENVIO</label>
             <textarea
               id="ship-address"
               class="input"
@@ -97,13 +97,13 @@
             ></textarea>
           </div>
           <div class="field">
-            <label class="label" for="ship-notes">Notas (opcional)</label>
+            <label class="label" for="ship-notes">REFERENCIAS (opcional)</label>
             <input id="ship-notes" class="input" type="text" formControlName="notes" />
           </div>
         </div>
         <footer class="modal__foot">
-          <button class="btn btn--ghost" type="button" (click)="closeCheckout()">Cancelar</button>
-          <button class="btn btn--primary" type="submit">Confirmar compra</button>
+          <button class="btn btn--ghost" type="button" (click)="closeCheckout()">CANCELAR</button>
+          <button class="btn btn--primary" type="submit">CONFIRMAR COMPRA</button>
         </footer>
       </form>
     </div>

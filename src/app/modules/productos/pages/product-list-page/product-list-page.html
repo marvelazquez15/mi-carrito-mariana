@@ -98,6 +98,11 @@
           }
         
         </div>
+
+        <div class="field">
+          <label class="label" for="pm-image">URL de la Imagen</label>
+          <input id="pm-image" class="input" type="text" formControlName="image_url" placeholder="Ej. https://direccion-de-la-imagen.jpg" />
+        </div>
   
         <div class="form__row form__row--2">
           <div class="field">
@@ -110,7 +115,7 @@
         </div>
         <div class="form__actions">
           <button class="btn btn--primary" type="submit">GUARDAR</button>
-          <button class="btn btn--ghost" type="button">CANCELAR</button>
+          <button class="btn btn--ghost" type="button" (click)="closeModal()">CANCELAR</button>
         </div>
       </form>
   
@@ -127,23 +132,23 @@
 >
   <div class="modal__surface card" (click)="$event.stopPropagation()">
     <header class="card__head modal__head">
-      <h2 class="h2">Eliminar producto</h2>
+      <h2 class="h2">ELIMINAR PRODUCTO</h2>
     </header>
 
     <div class="modal__body">
       <p>
-        ¿Seguro que deseas eliminar
+        ¿Eliminar 
         <strong>{{ pendingDeleteName() }}</strong>?
       </p>
-      <p class="muted">Esta acción no se puede deshacer.</p>
+      <p class="muted">Borrar este producto también eliminará sus datos.</p>
     </div>
 
     <footer class="modal__foot">
       <button class="btn btn--ghost" type="button" (click)="closeConfirmDeleteModal()">
-        Cancelar
+        CANCELAR
       </button>
       <button class="btn btn--danger" type="button" (click)="confirmDelete()">
-        Sí, eliminar
+        ELIMINAR
       </button>
     </footer>
   </div>

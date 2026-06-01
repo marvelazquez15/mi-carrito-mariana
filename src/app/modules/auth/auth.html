@@ -13,11 +13,6 @@
     <section class="page__head page__head--narrow">
       <div>
         <h1 class="h1">ACCEDE O CREA TU CUENTA</h1>
-        @if(message()){
-          <div class="alert">
-            {{message()}}
-          </div>
-        }
       </div>
     </section>
   
@@ -50,12 +45,19 @@
                   <input type="checkbox" />
                   <span>Recordarme</span>
                 </label>
-                <a class="link" href="#" (click)="$event.preventDefault()">¿Olvidaste tu contraseña?</a>
+                <a class="link" href="#" (click)="$event.preventDefault(); showAlertNotice('password')">¿Olvidaste tu contraseña?</a>
               </div>
               <div class="form__actions">
                 <button class="btn btn--primary" type="submit" >CONTINUAR</button>
-                <button class="btn btn--ghost" type="button">REGISTRARME</button>
+                <button class="btn btn--ghost" type="button" (click)="showAlertNotice('register')">REGISTRARME</button>
+                
               </div>
+                @if(message()){
+                <div class="alert">
+               {{message()}}
+                </div>
+              }
+              
             </form>
           </article>
     </section>

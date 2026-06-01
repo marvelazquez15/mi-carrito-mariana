@@ -9,15 +9,16 @@
     </a>
 
     <div class="topbar__actions">
-      <a class="btn btn--ghost" routerLink="/tienda" routerLinkActive="is-active">COMPRAR</a>
+      <a class="btn btn--ghost" routerLink="/tienda" routerLinkActive="is-active">TIENDA
+      </a>
 
       @if (authService.isLoggedIn()) {
-        <a class="btn btn--ghost" routerLink="/carrito" routerLinkActive="is-active">CESTA</a>
+        <a class="btn btn--ghost" routerLink="/carrito" routerLinkActive="is-active">CARRITO</a>
         <a class="btn btn--ghost" routerLink="/mis-pedidos" routerLinkActive="is-active">MIS PEDIDOS</a>
 
         @if (authService.isAdmin()) {
           <a class="btn btn--primary" routerLink="/productos" routerLinkActive="is-active">
-            Administrar productos
+            ADMINISTRAR PRODUCTOS
           </a>
         }
 

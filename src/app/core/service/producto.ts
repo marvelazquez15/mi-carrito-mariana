@@ -8,18 +8,18 @@ import { environment } from '@environments/environment'
   providedIn: 'root',
 })
 export class ProductoService {
-  private apiUrl = `${environment.apiUrl}/api/shoppingcart/public-products/`;
+  private apiUrl = `${environment.apiUrl}/api/shoppingcart/products/`;
 
   private http = inject(HttpClient)
 
-  public getAllProducts(page=1, pageSize=10): Observable<ApiResponse> {
+  public getAllProducts(page=1, pageSize=10, search= ''): Observable<ApiResponse> {
 
     const params = new HttpParams()
     .set('page', String(page))
     .set('page_size', String(pageSize))
 
 
-    return this.http.get<ApiResponse>(this.apiUrl, {params})
+    return this.http.get<ApiResponse>(`${this.apiUrl}?page=${page}&page_size=${pageSize}&search=${search}`)
   }
 
   public createProduct(productData: ProductRequest): Observable<ApiResponse>{

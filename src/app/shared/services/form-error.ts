@@ -19,6 +19,16 @@ export class FormErrorService {
       return 'Minimo 6 caracteres'
     }
 
+    if (control?.errors?.['incorrect']) {
+      return 'Contraseña Incorrecta';
+    }
+
+    if (control?.errors?.['incorrect']) {
+      return typeof control.errors['incorrect'] === 'string' 
+    ? control.errors['incorrect'] 
+    : 'Usuario Incorrecto';
+}
+
     return null
   
 

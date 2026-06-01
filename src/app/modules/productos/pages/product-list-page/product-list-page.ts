@@ -40,7 +40,8 @@ export class ProductListPage implements OnInit {
     description:['', [Validators.required,Validators.minLength(5)]],
     price:[0, [Validators.required,Validators.minLength(0.01)]],
     stock:[0, [Validators.required,Validators.minLength(0)]],
-    category:[0, [Validators.required,Validators.minLength(1)]]
+    category:[0, [Validators.required,Validators.minLength(1)]],
+    image_url:['', [Validators.required]]
   }
   )
 
@@ -50,7 +51,7 @@ export class ProductListPage implements OnInit {
 
   protected readonly pendingDeleteId = signal<number | null>(null);
 
-  private readonly pageSize = 5
+  private readonly pageSize = 3
   protected readonly totalCount = signal(0)
   protected readonly currentPage = signal(1)
   protected readonly totalPages = signal(1)
@@ -79,6 +80,7 @@ export class ProductListPage implements OnInit {
       price: Number(product.price),
       stock: product.stock,
       category: product.category,
+      image_url: product.image_url,
     })
 
     this.openCreateModal(true)

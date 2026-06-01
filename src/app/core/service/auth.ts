@@ -46,10 +46,17 @@ export class AuthService {
 
   private setUser(user: AuthUser): void {
     localStorage.setItem('user', JSON.stringify(user) as string);
+    this.user.set(user);
   }
 
   public logout(): void{
-    this.removeAccessToken()
+    this.removeAccessToken();
+    this.removeUser();
+  }
+
+  private removeUser(): void {
+  localStorage.removeItem('user');
+  this.user.set(null);
   }
 
   private removeAccessToken(): void{

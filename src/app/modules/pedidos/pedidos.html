@@ -1,25 +1,25 @@
 <main class="container page">
     <section class="page__head page__head--wide">
       <div>
-        <h1 class="h1">Mis pedidos</h1>
-        <p class="muted">Historial de compras</p>
+        <h1 class="h1">MIS PEDIDOS</h1>
+        <p class="muted">HISTORIAL DE COMPRAS</p>
       </div>
       <div class="page__meta">
-        <a class="btn btn--ghost" routerLink="/tienda">Ir a la tienda</a>
+        <a class="btn btn--ghost" routerLink="/tienda">IR A LA TIENDA</a>
       </div>
     </section>
   
     <section class="grid grid--single-wide">
       <article class="card">
         <header class="card__head">
-          <h2 class="h2">Órdenes</h2>
+          <h2 class="h2">ORDENES</h2>
           <div class="muted">
             {{ totalCount() }} pedidos · Página {{ currentPage() }} de {{ totalPages() }}
           </div>
         </header>
   
         @if (orders().length === 0) {
-          <p class="empty-msg muted">Aún no tienes pedidos.</p>
+          <p class="empty-msg muted">AÚN NO HAY PEDIDOS</p>
         } @else {
           <div class="table-wrap">
             <table class="table" aria-label="Mis pedidos">
@@ -70,7 +70,7 @@
                           type="button"
                           (click)="cancelOrder(order)"
                         >
-                          Cancelar
+                          CANCELAR
                         </button>
                       }
                     </td>
@@ -87,7 +87,7 @@
               (click)="goToPreviousPage()"
               [disabled]="!hasPrevious()"
             >
-              Anterior
+              ANTERIOR
             </button>
             <button
               class="btn btn--ghost btn--sm"
@@ -95,7 +95,7 @@
               (click)="goToNextPage()"
               [disabled]="!hasNext()"
             >
-              Siguiente
+              SIGUIENTE
             </button>
           </footer>
         }

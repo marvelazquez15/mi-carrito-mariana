@@ -1,86 +1,74 @@
 <main class="container page">
-    <section class="page__head page__head--wide">
-      <div>
-        <h1 class="h1">Tienda</h1>
-        <p class="muted">Catálogo de productos</p>
-      </div>
-      <div class="page__meta">
-        <!-- @if (isLoggedIn()) {
-          <a class="btn btn--primary" routerLink="/carrito">Ver carrito</a>
-        } @else {
-          <a class="btn btn--ghost" routerLink="/login">Iniciar sesión para comprar</a>
-        } -->
-      </div>
-    </section>
-  
-    <section class="grid grid--single-wide">
-      <article class="card">
-        <header class="card__head">
-          <h2 class="h2">Productos</h2>
-          <div class="muted">
-            {{ totalCount() }} productos · Página {{ currentPage() }} de {{ totalPages() }}
-          </div>
-        </header>
-  
-        <div class="table-wrap">
-          <table class="table" aria-label="Catálogo">
-            <thead>
-              <tr>
-                <th>Nombre</th>
-                <th class="col-num">Precio</th>
-                <th class="col-num">Stock</th>
-                <th>Categoría</th>
-                <th class="col-actions">Acción</th>
-              </tr>
-            </thead>
-            <tbody>
-              @for (product of products(); track product.id) {
-                <tr>
-                  <td>
-                    <app-product-cell
-                      [imageUrl]="product.image_url"
-                      [name]="product.name"
-                      [subtitle]="product.description"
-                    />
-                  </td>
-                  <td class="col-num">{{ product.price }}</td>
-                  <td class="col-num">{{ product.stock }}</td>
-                  <td>{{ product.category_name }}</td>
-                  <td class="col-actions">
-                    <button
-                      class="btn btn--primary btn--sm"
-                      type="button"
-                      (click)="addToCart(product)"
-                      [disabled]="product.stock < 1"
-                    >
-                      Agregar
-                    </button>
-                  </td>
-                </tr>
-              }
-            </tbody>
-          </table>
+  <section class="page__head page__head--wide">
+    <div>
+      <h1 class="h1">TIENDA EN LINEA</h1>
+      <p class="muted">CATÁLOGO DE PRODUCTOS</p>
+    </div>
+    <div class="page__meta"></div>
+  </section>
+
+  <section class="grid grid--single-wide">
+    <article class="card">
+      <header class="card__head">
+        <h2 class="h2">PRODUCTOS</h2>
+        <div class="muted">
+          {{ totalCount() }} productos · Página {{ currentPage() }} de {{ totalPages() }}
         </div>
-  
-        <footer class="pager">
-          <button
-            class="btn btn--ghost btn--sm"
-            type="button"
-            (click)="goToPreviousPage()"
-            [disabled]="!hasPrevious()"
-          >
-            Anterior
-          </button>
-          <button
-            class="btn btn--ghost btn--sm"
-            type="button"
-            (click)="goToNextPage()"
-            [disabled]="!hasNext()"
-          >
-            Siguiente
-          </button>
-        </footer>
-      </article>
-    </section>
-  </main>
-  
+      </header>
+
+      <div class="products-grid">
+        @for (product of products(); track product.id) {
+          <div class="product-card-item">
+            
+            <div class="product-card-item__main">
+              <app-product-cell
+                [imageUrl]="product.image_url"
+                [name]="product.name"
+                [subtitle]="product.description"
+              />
+            </div>
+
+            <div class="product-card-item__meta">
+              <span class="product-card-item__price">${{ product.price }}</span>
+              <span class="product-card-item__category">{{ product.category_name }}</span>
+              <span class="product-card-item__stock" [class.no-stock]="product.stock < 1">
+                {{ product.stock > 0 ? product.stock + ' disponibles' : 'Agotado' }}
+              </span>
+            </div>
+
+            <div class="product-card-item__actions">
+              <button
+                class="btn btn--primary btn--sm btn--block"
+                type="button"
+                (click)="addToCart(product)"
+                [disabled]="product.stock < 1"
+              >
+                Agregar al carrito
+              </button>
+            </div>
+
+          </div>
+        }
+      </div>
+
+      <footer class="pager">
+        <button
+          class="btn btn--ghost btn--sm"
+          type="button"
+          (click)="goToPreviousPage()"
+          [disabled]="!hasPrevious()"
+        >
+          ANTERIOR
+        </button>
+        <button
+          class="btn btn--ghost btn--sm"
+          type="button"
+          (click)="goToNextPage()"
+          [disabled]="!hasNext()"
+        >
+          SIGUIENTE
+        </button>
+      </footer>
+    </article>
+  </section>
+</main>

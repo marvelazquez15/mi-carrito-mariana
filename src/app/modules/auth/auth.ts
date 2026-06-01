@@ -28,25 +28,32 @@ public loginForm = this.fb.nonNullable.group({
 }
 )
 
-public login(): void{
-  console.log(this.loginForm)
-  if(this.loginForm.invalid){
+protected login(): void {
+  if (this.loginForm.invalid) {
+    this.loginForm.markAllAsTouched();
     return;
   }
 
-  const formValues = this.loginForm.getRawValue()
+  const { username, password } = this.loginForm.getRawValue();
 
-  this.authService.login(
-    formValues.username,
-    formValues.password
-  ).subscribe((response:AuthResponse)=>{
-    if (response.access) {
-      this.router.navigate(['/productos'])
-    }
-  })
+  this.authService.login(username, password).subscribe({
+    next: (response) => {
+      this.router.navigate(['/tienda']);
+    },
+    error: (err) => {
+      console.error('Error en login:', err);
+      const usernameControl = this.loginForm.get('username');
+      const passwordControl = this.loginForm.get('password');
 
-
+      if (usernameControl) {
+    usernameControl.setErrors({ incorrect: 'USUARIO INCORRECTO' });
+      }
   
+      if (passwordControl) {
+    passwordControl.setErrors({ incorrect: 'CONTRASEÑA INCORRECTA' });
+      }
+    }
+  });
 }
 
 public isFieldInvalid(field: string): boolean{
@@ -66,5 +73,13 @@ public getFieldError(field: string): string | null{
 
 }
 
+//mensaje temporal
+protected showAlertNotice(type: 'password' | 'register'): void {
+  if (type === 'password') {
+    this.message.set('Para restablecer tu acceso está desahabilitado por el momento.');
+  } else if (type === 'register') {
+    this.message.set('El registro público está deshabilitado. Solicita tu cuenta con soporte.');
+  }
+}
 
 }
