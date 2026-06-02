@@ -1,16 +1,16 @@
 import { Component, inject } from '@angular/core';
 import { AuthService } from '@core/service/auth'
 import { AuthResponse } from '@modules/auth/models/auth.models';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 import { ReactiveFormsModule, FormBuilder, Validators  } from '@angular/forms'
 import { FormErrorService } from '@shared/services/form-error';
 
 import { NotificationService } from '@shared/services/notification'
- 
+
 @Component({
   selector: 'app-auth',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterModule],
   templateUrl: './auth.html',
   styleUrl: './auth.css',
 })
@@ -71,15 +71,6 @@ public getFieldError(field: string): string | null{
 
   return this.formErrorService.getFieldError(control)
 
-}
-
-//mensaje temporal
-protected showAlertNotice(type: 'password' | 'register'): void {
-  if (type === 'password') {
-    this.message.set('Para restablecer tu acceso está desahabilitado por el momento.');
-  } else if (type === 'register') {
-    this.message.set('El registro público está deshabilitado. Solicita tu cuenta con soporte.');
-  }
 }
 
 }

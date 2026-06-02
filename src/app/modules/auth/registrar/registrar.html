@@ -1,0 +1,95 @@
+<main class="split-layout">
+  
+  <section class="split-layout__left">
+    <div class="brand-showcase">
+      <span class="brand-badge">MOON ~ SMART</span>
+      <h1 class="brand-title">Crea tu cuenta</h1>
+      <p class="brand-subtitle">Espacios inteligentes, hogares funcionales</p>
+    </div>
+  </section>
+
+  <section class="split-layout__right">
+    <div class="card">
+      <header class="card__head">
+        <h2 class="h2">REGISTRO DE CLIENTE</h2>
+        <p class="muted">Alta a cliente</p>
+      </header>
+
+      <form [formGroup]="registerForm" (ngSubmit)="onRegister()" class="form">
+        
+        <div class="form-row">
+          <div class="form__group">
+            <label class="label">NOMBRE</label>
+            <input formControlName="first_name" type="text" class="input" placeholder="Ej.  Mar" />
+
+            @if (isFieldInvalid('first_name')) {
+              <p class="error">{{ getFieldError('first_name') }}</p>
+            }
+          </div>
+
+          <div class="form__group">
+            <label class="label">APELLIDO</label>
+            <input formControlName="last_name" type="text" class="input" placeholder="Ramirez" />
+
+            @if (isFieldInvalid('last_name')) {
+              <p class="error">{{ getFieldError('last_name') }}</p>
+            }
+          </div>
+        </div>
+
+        <div class="form__group">
+          <label class="label">USUARIO</label>
+          <input formControlName="username" type="text" class="input" placeholder="MarVel" />
+
+          @if (isFieldInvalid('username')) {
+            <p class="error">{{ getFieldError('username') }}</p>
+          }
+        </div>
+
+        <div class="form__group">
+          <label class="label">EMAIL</label>
+          <input formControlName="email" type="email" class="input" placeholder="mar@gmail.com" />
+
+          @if (isFieldInvalid('email')) {
+            <p class="error">{{ getFieldError('email') }}</p>
+          }
+        </div>
+
+        <div class="form__group">
+          <label class="label">CONTRASEÑA</label>
+          <input formControlName="password" type="password" class="input" placeholder="••••••••••••" />
+
+          @if (isFieldInvalid('password')) {
+            <p class="error">{{ getFieldError('password') }}</p>
+          }
+        </div>
+
+        <div class="form__group">
+          <label class="label">CONFIRMAR CONTRASEÑA</label>
+          <input formControlName="password_confirm" type="password" class="input" placeholder="••••••••••••" />
+
+          @if (isFieldInvalid('password_confirm') || (registerForm.hasError('passwordMismatch') && registerForm.get('password_confirm')?.touched)) {
+            <p class="error">{{ getFieldError('password_confirm') }}</p>
+          }
+        </div>
+
+        @if (errorMessage()) {
+          <div class="alert-danger">
+            {{ errorMessage() }}
+          </div>
+        }
+
+        <div class="form__actions">
+          <button type="submit" class="btn btn--primary">
+            REGISTRARME
+          </button>
+          
+          <a class="btn btn--ghost" style="text-decoration: none; display: flex; align-items: center; justify-content: center;" routerLink="/login">
+            ¿YA TIENES CUENTA? LOGUEATE
+            </a>
+        </div>
+
+      </form>
+    </div>
+  </section>
+</main>

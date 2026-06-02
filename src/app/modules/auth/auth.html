@@ -17,49 +17,55 @@
     </section>
   
     <section class="grid grid--single">
-        <article class="card">
-            <header class="card__head">
-              <h2 class="h2">Inicio de Sesión</h2>
-              <div class="muted">Solo cuentas Autorizadas</div>
-            </header>
+      <article class="card">
+        <header class="card__head">
+          <h2 class="h2">Inicio de Sesión</h2>
+          <div class="muted">Solo cuentas Autorizadas</div>
+        </header>
+      
+        <form class="form" autocomplete="on" [formGroup]="loginForm" (ngSubmit)="login()">
+          <div class="field">
+            <label class="label" for="email">USUARIO</label>
+            <input id="email" class="input" type="input" formControlName="username" placeholder="Ej. Mariana" />
+            
+            @if(isFieldInvalid('username')){
+              <p class="error"> {{getFieldError('username')}} </p>
+            }
+          </div>
           
-            <form class="form" autocomplete="on" [formGroup]="loginForm" (ngSubmit)="login()">
-              <div class="field">
-                <label class="label" for="email">USUARIO</label>
-                <input id="email" class="input" type="input" formControlName="username" placeholder="Ej. Mariana" />
-                
-                @if(isFieldInvalid('username')){
-                  <p class="error"> {{getFieldError('username')}} </p>
-                }
-              </div>
-              <div class="field">
-                <label class="label" for="pass">CONTRASEÑA</label>
-                <input id="pass" class="input" type="password" formControlName="password" placeholder="••••••••••••••" />
+          <div class="field">
+            <label class="label" for="pass">CONTRASEÑA</label>
+            <input id="pass" class="input" type="password" formControlName="password" placeholder="••••••••••••••" />
 
-                @if(isFieldInvalid('password')){
-                  <p class="error"> {{getFieldError('password')}} </p>
-                }
-              </div>
-              <div class="form__row">
-                <label class="check">
-                  <input type="checkbox" />
-                  <span>Recordarme</span>
-                </label>
-                <a class="link" href="#" (click)="$event.preventDefault(); showAlertNotice('password')">¿Olvidaste tu contraseña?</a>
-              </div>
-              <div class="form__actions">
-                <button class="btn btn--primary" type="submit" >CONTINUAR</button>
-                <button class="btn btn--ghost" type="button" (click)="showAlertNotice('register')">REGISTRARME</button>
-                
-              </div>
-                @if(message()){
-                <div class="alert">
-               {{message()}}
-                </div>
-              }
-              
-            </form>
-          </article>
+            @if(isFieldInvalid('password')){
+              <p class="error"> {{getFieldError('password')}} </p>
+            }
+          </div>
+          
+          <div class="form__row">
+            <label class="check">
+              <input type="checkbox" />
+              <span>Recordarme</span>
+            </label>
+            <a class="link" href="#" (click)="$event.preventDefault()">¿Olvidaste tu contraseña?</a>
+          </div>
+          
+          <div class="form__actions">
+            <button class="btn btn--primary" type="submit">CONTINUAR</button>
+            
+            <a class="btn btn--ghost" style="text-decoration: none; display: flex; align-items: center; justify-content: center;" routerLink="/registrar">
+              REGISTRARME
+            </a>
+          </div>
+          
+          @if(message()){
+            <div class="alert">
+              {{message()}}
+            </div>
+          }
+          
+        </form>
+      </article>
     </section>
   </main>
 

@@ -32,5 +32,7 @@ export const routes: Routes = [
         loadComponent: () => import('./modules/pedidos/pedidos').then(m => m.Pedidos),
     },
 
-    
+    { path: "registrar",
+        loadComponent: () => import ('./modules/auth/registrar/registrar').then(m => m.Registrar),
+    },
 ];

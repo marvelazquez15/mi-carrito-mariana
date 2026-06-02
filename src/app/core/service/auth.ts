@@ -1,9 +1,9 @@
 import { Injectable, inject, signal,computed } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, tap } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, tap, switchMap } from 'rxjs';
 import { environment } from '@environments/environment'
 
-import {  AuthResponse, AuthUser } from '@modules/auth/models/auth.models';
+import {  AuthResponse, AuthUser, RegisterUser } from '@modules/auth/models/auth.models';
 
 @Injectable({
   providedIn: 'root',
@@ -12,6 +12,9 @@ export class AuthService {
   private http = inject(HttpClient)
 
   private apiUrl = `${environment.apiUrl}/api/token/`;
+  private profileUrl = `${environment.apiUrl}/api/shoppingcart/profile/`;
+
+  private registerUrl = `${environment.apiUrl}/api/shoppingcart/auth/register/`;
 
   private readonly accessToken = signal<string | null>(
     localStorage.getItem('access_token')
@@ -24,15 +27,26 @@ export class AuthService {
   public readonly isLoggedIn = computed(()=> !!this.accessToken())
   public readonly isAdmin = computed(() => this.user()?.group === 'admin');
 
-  public login(username:string, password:string): Observable<AuthResponse>{
+  public login(username:string, password:string): Observable<AuthUser>{
     return this.http.post<AuthResponse>(this.apiUrl, {username, password}).pipe(
       tap((response: AuthResponse)=>{
         console.log(response)
         this.setAccessToken(response.access)
         this.setUser(response.user);
-
+      }),
+      switchMap((response: AuthResponse) => {
+        const headers = new HttpHeaders().set('Authorization', `Bearer ${response.access}`);
+        return this.http.get<AuthUser>(this.profileUrl, { headers });
+      }),
+      tap((userProfile: AuthUser) => {
+        console.log('Perfil de usuario obtenido:', userProfile);
+        this.setUser(userProfile);
       })
-    )
+    );
+  }
+
+  public register(data: RegisterUser): Observable<AuthResponse>{
+    return this.http.post<AuthResponse>(this.registerUrl, data)
   }
 
   private setAccessToken(token: string): void{
